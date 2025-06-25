@@ -9,9 +9,9 @@ st.set_page_config(page_title = "Chatbot ejemplo 2", page_icon = "😉")
 
 with st.sidebar:
 
-    st.title("Usando la API de OpenAI")
+    st.title("Chatbot de Gaby")
 
-    image = Image.open('openai.jpg')
+    image = Image.open('happyface.jpge')
     st.image(image, caption = 'OpenAI')
 
     st.markdown(
