@@ -11,7 +11,7 @@ with st.sidebar:
 
     st.title("Chatbot de Gaby")
 
-    image = Image.open('happyface.jpge')
+    image = Image.open('openai.jpg')
     st.image(image, caption = 'OpenAI')
 
     st.markdown(
