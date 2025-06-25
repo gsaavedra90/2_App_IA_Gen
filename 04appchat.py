@@ -2,7 +2,7 @@ import streamlit as st
 import openai
 from PIL import Image
 
-st.set_page_config(page_title = "Chatbot usando la API de OpenAI", page_icon = "😉")
+st.set_page_config(page_title = "Chatbot ejemplo 2", page_icon = "😉")
 
 #export OPENAI_API_KEY="TU_KEY"
 
