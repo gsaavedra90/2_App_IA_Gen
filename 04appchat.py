@@ -1,6 +1,7 @@
 import streamlit as st
 import openai
 from PIL import Image
+from openai import OpenAI
 
 st.set_page_config(page_title = "Chatbot ejemplo 2", page_icon = "😉")
 
@@ -37,28 +38,22 @@ msg_chatbot = """
         - Lo que desees
 """
 
+
 def get_response_openai(prompt):
-    
-    model = "gpt-3.5-turbo"
+    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
-    message_input = {
-        'messages': [
-            {'role': 'system', 'content': 'Eres un asistente virtual'},
-            {'role': 'user', 'content': prompt}
-        ]
-    }
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "Eres un asistente virtual"},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0,
+        max_tokens=200,
+        n=1
+    )
+    return response.choices[0].message.content
 
-    # Realiza una solicitud a la API de OpenAI
-    response = openai.ChatCompletion.create(
-        model = model,
-        messages = message_input['messages'],
-        temperature = 0, #Si está más cercano a 1, es posible que tenga alucinaciones.
-        n = 1, #Número de respuestas
-        max_tokens = 200
-        )
-
-    result = response['choices'][0]['message']['content']
-    return result
 
 #Si no existe la variable messages, se crea la variable y se muestra por defecto el mensaje de bienvenida al chatbot.
 if "messages" not in st.session_state.keys():
