@@ -9,7 +9,7 @@ st.set_page_config(page_title = "Chatbot ejemplo 2", page_icon = "😉")
 
 with st.sidebar:
 
-    st.title("Chatbot de Gaby")
+    st.title("Juan el colombiano")
 
     image = Image.open('persona.jpg')
     st.image(image, caption = 'OpenAI')
