@@ -38,6 +38,7 @@ msg_chatbot = """
 """
 
 def get_response_openai(prompt):
+    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
