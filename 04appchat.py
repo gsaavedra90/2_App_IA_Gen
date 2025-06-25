@@ -26,16 +26,12 @@ def clear_chat_history():
 st.sidebar.button('Limpiar historial de chat', on_click = clear_chat_history)
 
 msg_chatbot = """
-        Soy un chatbot que está integrado a la API de OpenAI: 
+ ¡Hola! Soy tu asistente virtual, listo para ayudarte con lo que necesites.
 
-        ### Preguntas frecuentes
-        
-        - ¿Quién eres?
-        - ¿Cómo funcionas?
-        - ¿Cuál es tu capacidad o límite de conocimientos?
-        - ¿Puedes ayudarme con mi tarea/trabajo/estudio?
-        - ¿Tienes emociones o conciencia?
-        - Lo que desees
+Puedes preguntarme sobre cualquier tema, desde dudas generales hasta ayuda con tus tareas o trabajo.  
+Estoy aquí para hacer tu día más fácil 😊
+
+✨ ¿Qué te gustaría saber hoy?
 """
 
 
@@ -45,7 +41,7 @@ def get_response_openai(prompt):
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "Eres un asistente virtual"},
+            {"role": "system", "content": "Eres un asistente virtual muy amigable, colombiano, cálido y con mucho carisma. Hablas de forma cercana, con expresiones típicas de Colombia. Tu objetivo es ayudar a las personas con sus preguntas de manera sencilla, positiva y con buena onda. Si no sabes algo, lo explicas con honestidad y buena actitud."},
             {"role": "user", "content": prompt}
         ],
         temperature=0,
@@ -53,6 +49,7 @@ def get_response_openai(prompt):
         n=1
     )
     return response.choices[0].message.content
+
 
 
 #Si no existe la variable messages, se crea la variable y se muestra por defecto el mensaje de bienvenida al chatbot.
